@@ -6,7 +6,6 @@ choice=0
 cid=123456789
 cb=1000
 cp='qwertyuiop'
-tb=cb
 ministatement=[1,2,3,4,5]
 
 #menu
@@ -25,9 +24,9 @@ def menu():
 	elif (choice==2):
 		min_stat()
 	elif (choice==3):
-		withdraw(cb)
+		withdraw()
 	elif (choice==4):
-		deposit(cb)
+		deposit()
 	elif (choice==5):
 		exit()
 	else:
@@ -35,7 +34,7 @@ def menu():
 		menu()
 
 def ac_bal():
-	print(cb)
+	print('your account balance is', cb)
 	menu()
 
 def min_stat():
@@ -43,13 +42,14 @@ def min_stat():
 		print(i)
 	menu()
 
-def withdraw(cb):
-	w=int(input('Enter the amount you want to withdraw'))
-	if (w<=tb):
+def withdraw():
+	global cb
+	w=int(input('Enter the amount you want to withdraw  '))
+	if (w<=cb):
 		ministatement.pop()
-		ministatement.insert(w,1)
-		print(w,'from your account has been deducted')
-		cb=tb-w
+		ministatement.insert(0,w)
+		print(w,' from your account has been deducted')
+		cb-=w
 		menu()
 	else:
 		print('Insufficient Balance:Enter less amount')
@@ -57,13 +57,14 @@ def withdraw(cb):
 
 
 
-def deposit(cb):
+def deposit():
+	global cb
 	d=int(input("Enter the amount you want to deposit:"))
 
 	ministatement.pop()
-	ministatement.insert(d,1)
-	print(d, 'has been deposited in your account')
-	cb=tb+d
+	ministatement.insert(0,d)
+	print(d, ' has been deposited in your account')
+	cb+=d
 	menu()
 
 
