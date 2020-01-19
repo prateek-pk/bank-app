@@ -25,9 +25,9 @@ def menu():
 	elif (choice==2):
 		min_stat()
 	elif (choice==3):
-		withdraw()
+		withdraw(cb)
 	elif (choice==4):
-		deposit()
+		deposit(cb)
 	elif (choice==5):
 		exit()
 	else:
@@ -43,7 +43,7 @@ def min_stat():
 		print(i)
 	menu()
 
-def withdraw():
+def withdraw(cb):
 	w=int(input('Enter the amount you want to withdraw'))
 	if (w<=tb):
 		ministatement.pop()
@@ -57,7 +57,7 @@ def withdraw():
 
 
 
-def deposit():
+def deposit(cb):
 	d=int(input("Enter the amount you want to deposit:"))
 
 	ministatement.pop()
